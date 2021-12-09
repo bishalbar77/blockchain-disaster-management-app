@@ -1,19 +1,11 @@
 <template>
-    <div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Payments contract</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ address }} <span v-if="network">in {{ network }}</span></h6>
-                <p class="card-text mt-4">Current balance {{ balance }} ETH</p>
-                <button type="button" class="btn btn-primary" @click="withdraw">Withdraw</button>
-            </div>
-        </div>
-        <div class="mt-4" v-if="logged">
-            <h5>Payments of logged Metamask account</h5>
-            <h6 class="text-muted">{{ logged }}</h6>
-            <table class="table table-striped mt-4 w-75">
+    <div class="row">
+        <div class="col-lg-12 p-5" v-if="logged">
+            <h5>Payments</h5>
+            <table class="table mt-4">
                 <thead>
-                    <tr class="table-primary">
+                    <tr class="table-danger">
+                        <th scope="col">Account</th>
                         <th scope="col">Reference</th>
                         <th scope="col" class="text-right">Amount</th>
                         <th scope="col" class="text-center">Date</th>
@@ -21,6 +13,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="(payment, index) in payments" :key="index">
+                        <th scope="row">{{ logged }}</th>
                         <th scope="row">{{ payment.reference }}</th>
                         <td class="text-right">{{ payment.amount }} eth</td>
                         <td class="text-center">{{ payment.date }}</td>

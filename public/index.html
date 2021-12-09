@@ -5,7 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>Blockchain DApp</title>
+    <title>MetaCoin - Truffle Webpack Demo w/ Frontend</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.0.0/d3.js" charset="utf-8"></script>
+    
   </head>
   <body>
     <noscript>
@@ -13,5 +21,80 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      function getCoordinates2() {
+      var lat = -45.9034;
+      var long = 80.0982;
+      var shortest = 0;
+      var trigger_alert = false;
+      var are_you_safe = "You are Safe";
+      var are_you_safe_msg = "You are quiet far from affected area.";
+      var are_you_safe_type = "success";
+  
+  
+      var url = "https://data.nasa.gov/resource/tfkf-kniw.json";
+      $.get(
+        url,
+        function (data) {
+          if (data && data.length > 0) {
+            for (var i = 0; i <= data.length; i++) {
+              if (data[i]) {
+                var data_shortest = getDistanceFromLatLonInKm(lat, long, parseInt(data[i].latitude), parseInt(data[i].longitude));
+                if (i == 0) {
+                  shortest = data_shortest;
+                }
+                if (shortest >= data_shortest && data_shortest > 0) {
+                  shortest = data_shortest;
+                }
+                if(locationCheck(lat, long, parseInt(data[i].latitude), parseInt(data[i].longitude))) {
+                  console.log(data[i].latitude)
+                  shortest = -1;
+                }
+              }
+            }
+          }
+  
+          if (shortest == -1) {
+            trigger_alert = true;
+            are_you_safe = "Danger Around";
+            are_you_safe_msg = "You are very near to affected area. You are in the radius of 20km." ;
+            are_you_safe_type = "warning";
+          }
+  
+          swal(are_you_safe, are_you_safe_msg, are_you_safe_type);
+          $(".result").html(data);
+  
+        }
+      );
+  
+    };
+    </script>
+    <script>
+      function locationCheck(lat1, lon1, lat2, lon2) {
+        var userLat = Math.round(lat1); 
+        var userLon = Math.round(lon1); 
+        var preLat = Math.round(lat2); 
+        var preLon = Math.round(lon2); 
+        return (userLat == preLat) && (userLon == preLon);
+      }
+  
+      function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2 - lat1);  // deg2rad below
+        var dLon = deg2rad(lon2 - lon1);
+        var a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2)
+          ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+      }
+      
+      function deg2rad(deg) {
+        return deg * (Math.PI / 180)
+      }
+    </script>
   </body>
 </html>
