@@ -8,6 +8,13 @@ export default new Vuex.Store({
     contract: '',
     fruits:[
         {
+            name: 'Medicines',
+            description: 'Cocosutra Cereal - Granola, Crunchy Tropical Sunshine, Breakfast Cereal With Oats, Nuts, Seeds & Dry Fruits',
+            price:'0.010',
+            image:'cereal.jpeg',
+            units: 0
+        },
+        {
             name: 'Dry cereal or granola',
             description: 'Cocosutra Cereal - Granola, Crunchy Tropical Sunshine, Breakfast Cereal With Oats, Nuts, Seeds & Dry Fruits',
             price:'0.008',

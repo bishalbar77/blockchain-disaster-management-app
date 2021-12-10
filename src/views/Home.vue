@@ -24,6 +24,32 @@
         <input type="text" name="location" class="form-control" size="50" id="Location" onfocus="window.onfocuslocation();">
       </form> -->
     </div>
+    <div id="about" class="container-fluid">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>Create Alert</h2>
+          <br>
+          
+          <br>
+          <p>
+            Alert is being created as soon as trigger from global LHASA (Landslide Hazard Assessment for Situational Awareness)
+            model is obtained. It is a global landslide model built recently i.e. April 2018 & integrated
+            with IMERG(Integrated Multi Satellite Retrievals for GPM) which shows recent precipitation & updated every 30 minutes. 
+            In order to access location, we have used custom API (data.nasa.gov/resource/tfkf-kniw.json) to access location data for high alert in our smart contract.
+          </p>
+          <br>
+          <button class="btn btn-default btn-lg">CREATE ALERT</button>
+        </div>
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-signal logo"></span>
+        </div>
+      </div>
+    </div>
+    <footer class="container-fluid text-center">
+    <p>Developed By
+      <a href="#" title="Visit w3schools">Minor Chain</a>
+    </p>
+  </footer>
   </div>
   
 </template>

@@ -5,7 +5,8 @@
             <table class="table mt-4">
                 <thead>
                     <tr class="table-danger">
-                        <th scope="col">Account</th>
+                        <th scope="col">Sender Address</th>
+                        <th scope="col">Reciver Address</th>
                         <th scope="col">Reference</th>
                         <th scope="col" class="text-right">Amount</th>
                         <th scope="col" class="text-center">Date</th>
@@ -14,6 +15,7 @@
                 <tbody>
                     <tr v-for="(payment, index) in payments" :key="index">
                         <th scope="row">{{ logged }}</th>
+                        <th scope="row">{{ address }}</th>
                         <th scope="row">{{ payment.reference }}</th>
                         <td class="text-right">{{ payment.amount }} eth</td>
                         <td class="text-center">{{ payment.date }}</td>
