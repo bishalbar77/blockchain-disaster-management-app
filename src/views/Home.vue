@@ -34,7 +34,7 @@
       <h1>LOCATION CHECK</h1>
       <p>Instantly check any disaster/landslide issues near your location</p>
       <button type="button" class="btn btn-default" onclick="getCoordinates2()" 
-      style="text-align: center; padding-left: 300px; font-weight: bold; font-size: larger; padding-right: 300px;">AM I SAFE!!</button>
+      style="text-align: center; padding-left: 300px; font-weight: bold; font-size: larger; padding-right: 300px;" v-if="!is_victim_user">AM I SAFE!!</button>
       <!-- <form>
         <input type="text" name="location" class="form-control" size="50" id="Location" onfocus="window.onfocuslocation();">
       </form> -->
