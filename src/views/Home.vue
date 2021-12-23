@@ -4,13 +4,13 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/" style="font-size:27px;">NASA CHAIN</a>
+            <router-link to="/"><a class="navbar-brand" href="javascript:void(0)" style="font-size:27px;">MINOR CHAIN</a></router-link>
           </div>
             <ul class="nav navbar-nav" v-if="is_victim_user">
               <router-link to="/payments"><li><a href="javascript:void(0)">All Transactions</a></li></router-link>
             </ul>
             <ul class="nav navbar-nav" v-if="is_victim_user">
-              <router-link to="/shopping"><li><a href="javascript:void(0)">Claims</a></li></router-link>
+              <router-link to="/resources-payment"><li><a href="javascript:void(0)">Resources Requests</a></li></router-link>
             </ul>
             <div style="float:right;">
               <ul class="nav navbar-nav" style="padding-right:13px;padding-top:2px;color:#fff;font-size: 13px;font-weight: 200;">
@@ -71,46 +71,6 @@
           <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
           <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </div>
-    </div>
-    <div id="services" class="container-fluid text-center">
-      <h2>Check Statics</h2>
-      <h4>What we offer</h4>
-      <br>
-      <div class="row slideanim">
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-off logo-small"></span>
-          <h4>POWER</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-heart logo-small"></span>
-          <h4>LOVE</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-lock logo-small"></span>
-          <h4>JOB DONE</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-      </div>
-      <br><br>
-      <div class="row slideanim">
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-leaf logo-small"></span>
-          <h4>GREEN</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-certificate logo-small"></span>
-          <h4>CERTIFIED</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-          <span class="glyphicon glyphicon-wrench logo-small"></span>
-          <h4 style="color:#303030;">HARD WORK</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
         </div>
       </div>
     </div>

@@ -2,11 +2,9 @@
     <div>
         <div id="loadContract" class="d-flex justify-content-center align-items-center">
             <div class="text-center" style="width:60%">
-            <button type="button" class="btn btn-primary mb-4" @click="createContract">
-                Create payments contract
-            </button>
-            <hr>
-            <input id="address" v-model="address" type="text" placeholder="Existing contract.." class="mr-3 mt-4" /><button type="button" class="btn btn-primary" @click="loadContract">Load</button>
+                <button type="button" class="btn btn-lg btn-primary mb-4" @click="createContract">
+                    Update Sender Address
+                </button>
             </div>
         </div>
         <div v-if="loading" class="loading d-flex justify-content-center align-items-center">

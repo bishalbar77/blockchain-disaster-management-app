@@ -9,25 +9,67 @@ export default new Vuex.Store({
     fruits:[
         {
             name: 'Medicines',
-            description: 'Cocosutra Cereal - Granola, Crunchy Tropical Sunshine, Breakfast Cereal With Oats, Nuts, Seeds & Dry Fruits',
+            description: '1',
             price:'0.010',
             image:'cereal.jpeg',
             units: 0
         },
         {
+            name: 'Medicines',
+            description: '2',
+            price:'0.015',
+            image:'cereal.jpeg',
+            units: 0
+        },
+        {
+            name: 'Medicines',
+            description: '3',
+            price:'0.050',
+            image:'cereal.jpeg',
+            units: 0
+        },
+        {
             name: 'Dry cereal or granola',
-            description: 'Cocosutra Cereal - Granola, Crunchy Tropical Sunshine, Breakfast Cereal With Oats, Nuts, Seeds & Dry Fruits',
+            description: '2',
+            price:'0.018',
+            image:'cereal.jpeg',
+            units: 0
+        },
+        {
+            name: 'Dry cereal or granola',
+            description: '2',
             price:'0.008',
             image:'cereal.jpeg',
             units: 0
         },
         {
-            name:'Water',
-            description:'Water Gallon In Blue Plastic',
+            name: 'Dry cereal or granola',
+            description: '3',
+            price:'0.015',
+            image:'cereal.jpeg',
+            units: 0
+        },
+        {
+            name:'Water ',
+            description:'1',
             price:'0.019',
             image:'water.jpg',
             units: 0
-        }
+        },
+        {
+            name:'Water',
+            description:'2',
+            price:'0.020',
+            image:'water.jpg',
+            units: 0
+        },
+        {
+            name:'Water  ',
+            description:'3',
+            price:'0.05',
+            image:'water.jpg',
+            units: 0
+        },
     ]    
   },
   mutations: {
@@ -58,7 +100,10 @@ export default new Vuex.Store({
         return fruit[0].units
       }
       return 0     
-    }
+    },
+    getFruitUnit: state => {
+      return state.fruits.reduce((accumulator, currentValue) => currentValue.units)
+    },
   },
   actions: {
 

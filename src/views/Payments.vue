@@ -4,18 +4,20 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/" style="font-size:27px;">NASA CHAIN</a>
+            <router-link to="/"><a class="navbar-brand" href="javascript:void(0)" style="font-size:27px;">MINOR CHAIN</a></router-link>
           </div>
             <ul class="nav navbar-nav">
               <router-link to="/payments"><li><a href="javascript:void(0)">All Transactions</a></li></router-link>
+            </ul>
+            <ul class="nav navbar-nav">
+              <router-link to="/resources-payment"><li><a href="javascript:void(0)">Resources Requests</a></li></router-link>
             </ul>
         </div>
       </nav>
     </div>
     <div class='container'>
-
       <PaymentsLoad v-if="!hasContract" />
-      <PaymentsDetail v-if="hasContract" />
+      <PaymentsDetail/>
     </div>
   </div>
 </template>

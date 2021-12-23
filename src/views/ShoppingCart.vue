@@ -4,31 +4,28 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/" style="font-size:27px;">NASA CHAIN</a>
+            <router-link to="/"><a class="navbar-brand" href="javascript:void(0)" style="font-size:27px;">MINOR CHAIN</a></router-link>
           </div>
             <ul class="nav navbar-nav">
-              <router-link to="/payments"><li><a href="javascript:void(0)">All Transactions</a></li></router-link>
-            </ul>
-            <ul class="nav navbar-nav">
-              <router-link to="/shopping"><li><a href="javascript:void(0)">Claims</a></li></router-link>
+              <router-link to="/shopping"><li><a href="javascript:void(0)">Get Resources</a></li></router-link>
             </ul>
         </div>
       </nav>
     </div>
     <div class='container'>
-        <Basket />
+        <GetResources />
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Basket from '@/components/Basket.vue'
+import GetResources from '@/components/GetResources.vue'
 
 export default {
   name: 'shoppingCart',
   components: {
-    Basket
+    GetResources
   }
 }
 </script>
