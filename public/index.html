@@ -23,8 +23,8 @@
     <!-- built files will be auto injected -->
     <script>
       function getCoordinates2() {
-      var lat = -45.9034;
-      var long = 80.0982;
+      var lat = -46.7748;
+      var long = 137.6337;
       var shortest = 0;
       var trigger_alert = false;
       var are_you_safe = "You are Safe";
@@ -46,7 +46,7 @@
                 if (shortest >= data_shortest && data_shortest > 0) {
                   shortest = data_shortest;
                 }
-                if(locationCheck(lat, long, parseInt(data[i].latitude), parseInt(data[i].longitude))) {
+                if(locationCheck(lat, long, data[i].latitude, data[i].longitude)) {
                   console.log(data[i].latitude)
                   shortest = -1;
                 }
@@ -71,10 +71,10 @@
     </script>
     <script>
       function locationCheck(lat1, lon1, lat2, lon2) {
-        var userLat = Math.round(lat1); 
-        var userLon = Math.round(lon1); 
-        var preLat = Math.round(lat2); 
-        var preLon = Math.round(lon2); 
+        var userLat = lat1; 
+        var userLon = lon1; 
+        var preLat = lat2; 
+        var preLon = lon2; 
         return (userLat == preLat) && (userLon == preLon);
       }
   
