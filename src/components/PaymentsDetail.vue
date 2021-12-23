@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-12 p-5" v-if="logged">
-            <h5>Payments</h5>
+            <h3 class="p-3">Payments</h3>
             <table class="table mt-4">
                 <thead>
                     <tr class="table-danger">

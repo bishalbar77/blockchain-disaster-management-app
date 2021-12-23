@@ -10,15 +10,14 @@
               <router-link to="/payments"><li><a href="javascript:void(0)">All Transactions</a></li></router-link>
             </ul>
             <ul class="nav navbar-nav">
-              <router-link to="/shopping"><li><a href="javascript:void(0)">Claims</a></li></router-link>
+              <router-link to="/resources-payment"><li><a href="javascript:void(0)">Resources Requests</a></li></router-link>
             </ul>
         </div>
       </nav>
     </div>
     <div class='container'>
-
       <PaymentsLoad v-if="!hasContract" />
-      <PaymentsDetail v-if="hasContract" />
+      <PaymentsDetail/>
     </div>
   </div>
 </template>
@@ -48,7 +47,7 @@
       background-color: #b3b3b3;
       color: #fff;
       padding: 100px 25px;
-      font-family: Montserrat, sans-serif;
+      font-family: Lato, sans-serif;
   }
   .container-fluid {
       padding: 60px 50px;
@@ -141,7 +140,7 @@
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;
-      font-family: Montserrat, sans-serif;
+      font-family: Lato, sans-serif;
   }
   .navbar li a, .navbar .navbar-brand {
       color: #fff !important;
@@ -213,8 +212,6 @@ export default {
 
 <style scope>
   #main {
-    display: block;
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

@@ -6,12 +6,27 @@
           <div class="navbar-header">
             <router-link to="/"><a class="navbar-brand" href="javascript:void(0)" style="font-size:27px;">MINOR CHAIN</a></router-link>
           </div>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" v-if="is_victim_user">
               <router-link to="/payments"><li><a href="javascript:void(0)">All Transactions</a></li></router-link>
             </ul>
-            <ul class="nav navbar-nav">
-              <router-link to="/shopping"><li><a href="javascript:void(0)">Claims</a></li></router-link>
+            <ul class="nav navbar-nav" v-if="is_victim_user">
+              <router-link to="/resources-payment"><li><a href="javascript:void(0)">Resources Requests</a></li></router-link>
             </ul>
+            <div style="float:right;">
+              <ul class="nav navbar-nav" style="padding-right:13px;padding-top:2px;color:#fff;font-size: 13px;font-weight: 200;">
+                <li>Victim</li>
+              </ul>
+              <ul class="nav navbar-nav">
+                <label class="switch" v-if="!is_victim_user">
+                  <input type="checkbox" @click="saveUser" checked>
+                  <span class="slider round"></span>
+                </label>
+                <label class="switch" v-if="is_victim_user">
+                  <input type="checkbox" @click="saveUser">
+                  <span class="slider round"></span>
+                </label>
+              </ul>
+            </div>
         </div>
       </nav>
     </div>
@@ -19,7 +34,7 @@
       <h1>LOCATION CHECK</h1>
       <p>Instantly check any disaster/landslide issues near your location</p>
       <button type="button" class="btn btn-default" onclick="getCoordinates2()" 
-      style="text-align: center; padding-left: 300px; font-weight: bold; font-size: larger; padding-right: 300px;">AM I SAFE!!</button>
+      style="text-align: center; padding-left: 300px; font-weight: bold; font-size: larger; padding-right: 300px;" v-if="!is_victim_user">AM I SAFE!!</button>
       <!-- <form>
         <input type="text" name="location" class="form-control" size="50" id="Location" onfocus="window.onfocuslocation();">
       </form> -->
@@ -42,6 +57,20 @@
         </div>
         <div class="col-sm-4">
           <span class="glyphicon glyphicon-signal logo"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid bg-grey">
+      <div class="row">
+        <div class="col-sm-4">
+          <span class="glyphicon glyphicon-globe logo slideanim"></span>
+        </div>
+        <div class="col-sm-8">
+          <h2>Our Values</h2><br>
+          <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+          <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
       </div>
     </div>
@@ -79,7 +108,7 @@
       background-color: #b3b3b3;
       color: #fff;
       padding: 100px 25px;
-      font-family: Montserrat, sans-serif;
+      font-family: Lato, sans-serif;
   }
   .container-fluid {
       padding: 60px 50px;
@@ -172,7 +201,7 @@
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;
-      font-family: Montserrat, sans-serif;
+      font-family: Lato, sans-serif;
   }
   .navbar li a, .navbar .navbar-brand {
       color: #fff !important;
@@ -238,14 +267,35 @@
 <script>
 
 export default {
-  name: 'home'
+  name: 'home',
+  data: function() {
+        return {
+            address: '',
+            loading: false,
+            is_victim_user: localStorage.getItem('is_victim'),
+        }
+    },
+    computed: {
+      is_victim: function() {
+        return localStorage.getItem('is_victim')
+      },
+    },
+    methods: {
+        saveUser: async function() {
+          if(localStorage.getItem('is_victim')) {
+            localStorage.removeItem('is_victim');
+            this.is_victim_user = false;
+          } else {
+            localStorage.setItem('is_victim', true);
+            this.is_victim_user = true;
+          }
+        }
+    }
 }
 </script>
 
 <style scope>
   #main {
-    display: block;
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
