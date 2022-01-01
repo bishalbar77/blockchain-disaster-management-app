@@ -12,8 +12,8 @@ beforeEach(async () => {
 
 describe('Dapp Payments', () => {
     it ('Given Payment contract When pay then balance of contract increases the value of the payment', async () => {
-        const owner = accounts[0]
-        const payer = accounts[1]
+        const owner = accounts[2]
+        const payer = accounts[3]
 
         // Given
         const contract = await givenPaymentContract(owner)
@@ -37,8 +37,8 @@ describe('Dapp Payments', () => {
     })
 
     it ('Given Payment contract with funds When withdraw then funds to owner', async () => {
-        const owner = accounts[0]
-        const payer = accounts[1]
+        const owner = accounts[2]
+        const payer = accounts[3]
 
         // Given
         const contract = await givenPaymentContract(owner)
@@ -70,9 +70,9 @@ describe('Dapp Payments', () => {
     })
 
     it('Given Payment contract with funds When someone different of owner withdraw then fails', async () => {
-        const owner = accounts[0]
+        const owner = accounts[2]
         const payer = accounts[1]
-        const thief = accounts[2]
+        const thief = accounts[0]
 
         // Given
         const contract = await givenPaymentContract(owner)

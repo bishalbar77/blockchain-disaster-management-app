@@ -20,7 +20,8 @@
                         <th scope="row">{{ payment.unit }}</th>
                         <th scope="row">{{ payment.amount }} eth</th>
                         <th scope="row">{{ payment.status }}</th>
-                        <th scope="row"><button class="btn btn-lg btn-primary" @click="pay">Pay Now</button></th>
+                        <th scope="row" v-if="payment.status == 'Initialized'"><button class="btn btn-lg btn-primary" @click="pay(payment.id)">Pay</button></th>
+                        <th scope="row" v-if="payment.status == 'Completed'"><button class="btn btn-lg btn-default" disabled>Paid</button></th>
                     </tr>
                 </tbody>
             </table>
@@ -82,7 +83,7 @@ export default {
             }
         },
         
-        pay: async function() {
+        pay: async function(id) {
             const address = this.$store.state.contract
             const reference = 'SC-' + new Date().getTime()
             const amount = this.$store.getters.totalAmount
@@ -92,8 +93,19 @@ export default {
             console.log(address)
             this.loading = true
             try {
-                await paymentsService.pay(address, reference, amount)
-                swal("Transaction Success", "Successfully request for resources", "success");
+                const response = await paymentsService.pay(address, reference, amount)
+                console.log(response)
+                if(response == 'MetaMask Tx Signature: User denied transaction signature.') {
+                    swal("Transaction Failed", "User denied transaction signature", "warning");
+                } else {
+                    const requestBody = { 
+                        trasaction_id: id
+                    }
+                    const response = await axios.post('http://127.0.0.1:8000/api/update_transaction', requestBody)
+                    .then(response => this.responseData = response.data)
+                    .catch(error => {});
+                    swal("Transaction Success", "Successfully request for resources", "success");
+                }
             } catch (e) {
                 console.log(e)
             }
